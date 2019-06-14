@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+</head>
+<body>
+<div th:fragment="Objects_Table">
+    <table class="table table-hover" id="objects_table" width="100%" >
+        <thead>
+        <tr>
+            <th scope="col">Алиас</th>
+            <th scope="col">EUI</th>
+            <th scope="col">Долгота</th>
+            <th scope="col">Широта</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<div th:fragment="Objects_Table__">
+    <table class="table table-hover" id="UsersDTO_table" width="100%" >
+        <thead>
+        <tr>
+            <th scope="col">Имя пользователя</th>
+            <th scope="col">email</th>
+            <th scope="col">Группы</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>
+</html>

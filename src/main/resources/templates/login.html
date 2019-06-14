@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <div th:insert="~{bootstrap_elem :: head}"></div>
+
+    <style type="text/css">
+        .form_ui_style  {
+            /* Отступы вокруг элемента */
+            margin: 5% 20% auto;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            width: auto;
+        }
+    </style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+
+<!--***********************************-->
+
+<div th:insert="~{navbar_thy :: navbar_parts}"></div>
+<div th:include="~{login_thy :: login (false,'/login')}"></div>
+<div th:insert="~{bootstrap_elem :: body}"></div>
+
+</body>
+</html>
+

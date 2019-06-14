@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+</head>
+<body>
+<div th:fragment="control_dialog">
+    <div class="modal fade" id="control_modalDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Задайте яркость группы:</h5>
+                </div>
+                <div class="modal-body">
+                    <label for="brightness_level" th:id="value_br_id">Уровень яркости:</label>
+                    <input type="range" class="custom-range" min="0" max="100" step="10" id="brightness_level"  oninput="showVal(this.value)" onchange="showVal(this.value)">
+                    <script>
+                        value_br_id.innerHTML='Уровень яркости: '+ brightness_level.value + ' %';
+                        function showVal() {
+                            value_br_id.innerHTML='Уровень яркости: '+ brightness_level.value + ' %';
+                        }
+                    </script>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" onclick="sendGroupCommand()">Отправить команду</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

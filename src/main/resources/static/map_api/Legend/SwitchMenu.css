@@ -1,0 +1,103 @@
+.leaflet-control-switch-in-osm {
+    background: none repeat scroll 0 0 #F8F8F9;
+    border: 1px solid #888888;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+.leaflet-control-switch-in-osm .leaflet-control-switch-in-osm-toggle {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    height: 36px;
+    width: 36px;
+    display: block;
+}
+.leaflet-control-switch-in-osm .leaflet-control-switch-in-osm-toggle {
+    background-image: url("/icon/devices.png");
+}
+.leaflet-control-switch-in-osm .osm-editor + .osm-editor {
+    border-left: 1px solid black;
+}
+.leaflet-control-switch-in-osm a.osm-editor {
+    display: none;
+    height: 36px;
+    min-width: 36px;
+    text-align: center;
+    line-height: 36px;
+    color: #333;
+    padding: 0 5px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+.leaflet-control-switch-in-osm:hover a.osm-editor {
+    display: inline-block;
+}
+a.osm-editor:hover {
+    box-shadow: 0 0 2px 0 black inset;
+}
+.leaflet-control-switch-in-osm:hover .leaflet-control-switch-in-osm-toggle {
+    display: none;
+}
+
+.leaflet-control-switch-hidden {
+    display: none;
+}
+
+.span-shadow {text-align:center}
+.span-shadow  {
+    display: inline-block;
+    /*margin: 15px;*/
+    /*padding: 20px 30px;*/
+    cursor: pointer;
+    /*border-radius: 10px;*/
+    color: white;
+    transition: 1s linear;
+
+}
+.span-shadow :hover {
+    box-shadow: 0 0 0 2px #D2973D inset, 0 0 0 4px white inset;
+}
+.boarder_Btn {
+    height: 10px;
+    min-width: 10px;
+    background: #000;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    margin: 0px auto;
+}
+
+.boarder_Btn:before,
+.boarder_Btn:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 36px;
+    height: 36px;
+    border: green solid 2px;
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.boarder_Btn:before {
+    right: -5px;
+    top: -5px;
+    transform: translate(20px, -20px);
+    border-left: none;
+    border-bottom: none;
+}
+
+.boarder_Btn:after {
+    left: -5px;
+    bottom: -5px;
+    transform: translate(-20px, 20px);
+    border-right: none;
+    border-top: none;
+}
+
+.boarder_Btn:hover:before,
+.boarder_Btn:hover:after {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+}

@@ -1,0 +1,61 @@
+.leaflet-control-edit-in-osm {
+    background: none repeat scroll 0 0 #F8F8F9;
+    border: 1px solid #888888;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+.leaflet-control-edit-in-osm .leaflet-control-edit-in-osm-toggle {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    height: 36px;
+    width: 36px;
+    display: block;
+}
+.leaflet-control-edit-in-osm .leaflet-control-edit-in-osm-toggle {
+    background-image: url("/icon/menu_black.png");
+}
+.leaflet-control-edit-in-osm .osm-editor + .osm-editor {
+    border-left: 1px solid black;
+}
+.leaflet-control-edit-in-osm a.osm-editor {
+    display: none;
+    height: 36px;
+    min-width: 36px;
+    text-align: center;
+    line-height: 36px;
+    color: #333;
+    padding: 0 5px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+.leaflet-control-edit-in-osm:hover a.osm-editor {
+    display: inline-block;
+}
+a.osm-editor:hover {
+    box-shadow: 0 0 2px 0 black inset;
+}
+.leaflet-control-edit-in-osm:hover .leaflet-control-edit-in-osm-toggle {
+    display: none;
+}
+
+.leaflet-control-edit-hidden {
+    display: none;
+}
+.selected-btn-shadow-1 {
+    background: #e6e3df;
+    text-align: center;
+}
+.selected-btn-shadow-1 span {
+    margin: 50px;
+    height: 100px;
+    width: 200px;
+    display: inline-block;
+}
+.selected-btn-shadow-1 span {
+    margin: 50px;
+    height: 100px;
+    width: 200px;
+    display: inline-block;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5), 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+}

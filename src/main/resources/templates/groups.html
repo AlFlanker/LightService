@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Thymeleaf Include - bootstrap_elem: head -->
+    <div th:insert="~{bootstrap_elem :: head}"></div>
+
+    <!-- JQuery DataTables CSS-->
+    <link rel="stylesheet" type="text/css" href="reportConsructor/datatables-1.10.18/datatables.css"/>
+
+    <!-- Пользовательские стили -->
+    <link href="reportConsructor/styles.css" rel="stylesheet">
+</head>
+<body>
+<!-- Thymeleaf Include - security_data: csrf_fragment -->
+<div th:insert="~{security_data :: csrf_fragment}"></div>
+
+<!-- Thymeleaf Include - bootstrap_elem: body -->
+<div th:insert="~{bootstrap_elem :: body}"></div>
+
+<!-- Thymeleaf Include - navbar_thy: navbar_parts -->
+<div th:insert="~{navbar_thy :: navbar_parts}"></div>
+
+<div class="container main-body" id="main-body">
+    <div class="row">
+        <div class="form-ui-style">
+            <div>
+                <form th:action="@{/groups/add}" method="post">
+                    <div class="row my-2">
+                        <div class="col">
+                            <input type="text" name="nameOfGroup" class="form-control " placeholder="Имя группы"/>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit">Добавить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- JQuery DataTables JS-->
+            <script type="text/javascript" src="reportConsructor/datatables-1.10.18/datatables.js"></script>
+            <script type="text/javascript" src="reportConsructor/datatables-1.10.18/jszip.min.js"></script>
+            <script type="text/javascript" src="reportConsructor/datatables-1.10.18/pdfmake.min.js"></script>
+            <script type="text/javascript" src="reportConsructor/datatables-1.10.18/vfs_fonts.js"></script>
+            <script type="text/javascript" src="reportConsructor/datatables-1.10.18/buttons.html5.min.js"></script>
+            <script type="text/javascript" src="reportConsructor/datatables-1.10.18/buttons.print.min.js"></script>
+
+            <!-- Основная логика -->
+            <script type="text/javascript" src="groups_script.js"></script>
+
+            <!-- Thymeleaf Include - GroupsTable -->
+            <div th:insert="~{GroupsTable::Groups_Table}"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

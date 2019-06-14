@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:insert="~{bootstrap_elem :: head}"></div>
+</head>
+<body>
+<div th:insert="~{bootstrap_elem :: body}"></div>
+<div th:insert="~{navbar_thy :: navbar_parts}"></div>
+<div th:insert="~{security_data :: csrf_fragment}"></div>
+<script type="text/javascript" src="/profile/profile.js" defer></script>
+<div class="container pb-3">
+
+<div class="card " style="box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Ваш профиль:</h4>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div>
+                    <div class="form-group row">
+                        <label for="username" class="col-4 col-form-label">Имя пользователя:</label>
+                        <div class="col-8">
+                            <input id="username" th:value="${username}" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                            <div class="invalid-feedback">
+                                не может быть пустым!
+                            </div>
+                            <div class="valid-feedback">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="select" class="col-4 col-form-label">Роль:</label>
+                        <div class="col-8">
+                            <select id="select" name="role_select" class="custom-select">
+                                <option th:each="role : ${roles}"
+                                        th:value="${role}"
+                                        th:text="${role}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="pass" class="col-4 col-form-label">Новый пароль:</label>
+                        <div class="col-8">
+                            <input id="pass" name="password" placeholder="password" class="form-control" type="password">
+                            <div class="invalid-feedback">
+                                пароли должны совпадать!
+                            </div>
+                            <div class="valid-feedback">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="rep_pass" class="col-4 col-form-label">Повторите ввод:</label>
+                        <div class="col-8">
+                            <input id="rep_pass" name="repPassword" placeholder="password" class="form-control" type="password">
+                            <div class="invalid-feedback">
+                               пароли должны совпадать!
+                            </div>
+                            <div class="valid-feedback">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-4 col-8">
+                            <button id="profileBtn" onclick="updateUserProp()" class="btn btn-primary">Обновить данные</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+</html>

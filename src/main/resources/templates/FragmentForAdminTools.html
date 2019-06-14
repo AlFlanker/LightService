@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/globalManager.css" th:href="@{/css/globalManager.css}"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="organizationForm">
+    <div id="RegOrganizationFrom" class="card"
+         style="display: none; box-shadow: 0 1rem 2rem rgba(0,0,0,0.5), 0 0.5rem 0.7rem rgba(0,0,0,0.5)">
+        <body class="bg-light">
+        <div class="">
+            <div class="container">
+                <!--<div class="row">-->
+                <div class="col-md-12 order-md-1">
+                    <hr class="mb-4">
+                    <h4 class="mb-3 mt-2"><b>Форма регистрации:</b></h4>
+                    <div id="org_registration_from" novalidate="">
+                        <div class="row">
+                            <div class="col-md-4 mb-3"><label>Имя администратора организации:</label>
+                                <input type="text" name="username" id="Organization_username" class="form-control"
+                                       placeholder="" value=""
+                                       required="">
+                                <div id="Organization_username_invalid" class="invalid-feedback"> Требуется ввести имя
+                                    пользователя!
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3"><label>Пароль:</label>
+                                <input type="password" class="form-control" name="password" id="Organization_password"
+                                       placeholder="" value=""
+                                       required="">
+                                <div id="Organization_password_invalid" class="invalid-feedback">Введите пароль!</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="Organization_email">Email <span
+                                        class="text-muted"></span></label>
+                                <input type="email" class="form-control" name="email" id="Organization_email"
+                                       placeholder="you@example.com">
+                                <div id="Organization_email_invalid" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4 mb-3"><label>Название органиации:</label>
+                                <input type="text" class="form-control" name="organization"
+                                       id="Organization_organization" placeholder="" required="">
+                                <div id="Organization_organization_invalid" class="invalid-feedback"> Введие название
+                                    организации!
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block" id="organization_registration">Зарегистрировать
+                        </button>
+                        <hr class="mb-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </body>
+    </div>
+</div>
+
+<div th:fragment="WorkGroupForm">
+    <div id="RegWorkGroupFrom" class="card"
+         style="display: none; box-shadow: 0 1rem 2rem rgba(0,0,0,0.5), 0 0.5rem 0.7rem rgba(0,0,0,0.5)">
+        <body class="bg-light">
+        <div class="">
+            <div class="container">
+                <!--<div class="row">-->
+                <div class="col-md-12 order-md-1">
+                    <hr class="mb-4">
+                    <h4 class="mb-3 mt-2"><b>Форма для регистрации рабочей группы:</b></h4>
+                    <div novalidate="">
+                        <div class="row">
+                            <div class="col-md-4 mb-3"><label>Имя администратора рабочей группы:</label>
+                                <input type="text" class="form-control" name="username" id="WG_username" placeholder=""
+                                       value=""
+                                       required="">
+                                <div id="wg_username_invalid" class="invalid-feedback"> Требуется ввести имя
+                                    пользователя!
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3"><label>Пароль:</label>
+                                <input type="password" class="form-control" name="password" id="WG_password"
+                                       placeholder=""
+                                       value=""
+                                       required="">
+                                <div id="WG_password_invalid" class="invalid-feedback">Введите пароль!</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3"><label>Название группы:</label>
+                                <input type="text" class="form-control" name="workGroup" id="WG_workGroup"
+                                       placeholder="" required="">
+                                <div id="WG_workGroup_invalid" class="invalid-feedback"> Введие название группы!</div>
+                            </div>
+                            <div class="col-md-4 mb-3"><label>email:</label>
+                                <input type="email" class="form-control" name="workGroup" id="WG_email" placeholder=""
+                                       required="">
+                                <div id="WG_email_invalid" class="invalid-feedback"> Введие email!</div>
+                            </div>
+                        </div>
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block" id=registrate_workgroup>Зарегистрировать
+                        </button>
+                        <hr class="mb-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </body>
+    </div>
+</div>
+<div th:fragment="UserEditForm">
+    <div id="userEditForm" class="card"
+         style="display: none; box-shadow: 0 1rem 2rem rgba(0,0,0,0.5), 0 0.5rem 0.7rem rgba(0,0,0,0.5)">
+        <body class="bg-light">
+        <div class="container">
+            <hr class="mb-4">
+            <h4 class="mb-3 mt-2"><b>Свойства пользователя:</b></h4>
+            <div class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-4"><label for="username_id">Имя пользователя:</label>
+                        <input type="text" class="form-control" id="username_id" placeholder="" value="" required="">
+                        <div id="username_id_invalid" class="invalid-feedback"> некорректное имя пользователя</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-4"><label for="email">Email </label>
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                            <div id="email_invalid" class="invalid-feedback">некорректный email
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-4"><label for="role_selector_id">Права:<br></label>
+                        <select class="custom-select d-block w-100" id="role_selector_id" required="">
+                        </select>
+                        <div id="role_selector_id_invalid" class="invalid-feedback" style="">привилегий недостаточно!
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"><label for="user_pass_id">Пароль:</label>
+                        <input type="password" class="form-control" id="user_pass_id" placeholder="" value=""
+                               required="">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-4"><label for="user_pass_rep_id">Повторите пароль:</label>
+                        <input type="password" class="form-control" id="user_pass_rep_id" placeholder="" value=""
+                               required="">
+                        <div class="invalid-feedback">пароли не совпадают!</div>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" id="save_user_form_id">Сохранить
+                </button>
+                <hr class="mb-4">
+            </div>
+        </div>
+        </body>
+    </div>
+</div>
+
+<!--display: none;-->
+<div th:fragment="Profile">
+
+    <div class="container mt-5">
+
+        <div id="profileForm" class="card card-nav-tabs text-center mb-3"
+             style="display: none; box-shadow: 0 1rem 2rem rgba(0,0,0,0.5), 0 0.5rem 0.7rem rgba(0,0,0,0.5);width: 100%">
+            <div class="card-header card-header-primary"><h5>
+                Источник данных:
+            </h5></div>
+            <div class="card-body text-dark">
+                <div id="profile_form">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" style="width: fit-content" for="serviceType_id">Текущий
+                            сервис</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select" id="serviceType_id">
+                                <option value="" selected>Выберите сервис</option>
+                                <option value="Vega" onclick="">Vega</option>
+                                <option value="Net868" onclick="">Net868</option>
+                                <option value="JugSystema">JugSystema</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--style="display: none"-->
+<div th:fragment="itemSelection">
+
+    <div class="row  my-5 justify-content-center" id="SelectObjectType" style="display: none">
+        <div class="col-md-1 p-3 ">
+            <label class="image-checkbox myCol " id="userCheck">
+                <img src="https://material.io/tools/icons/static/icons/baseline-account_circle-24px.svg">
+                <input id="inner_userCheck" type="checkbox" value=""/>
+            </label>
+        </div>
+        <div class="col-md-1 p-3 ">
+            <label class="image-checkbox myCol" id="lampCheck">
+                <img src="https://material.io/tools/icons/static/icons/baseline-adjust-24px.svg">
+                <input id="inner_lampCheck" type="checkbox" value=""/>
+            </label>
+        </div>
+        <div class="col-md-1 p-3 ">
+            <label class="image-checkbox myCol" id="cpCheck">
+                <img src="https://material.io/tools/icons/static/icons/baseline-center_focus_weak-24px.svg">
+                <input id="inner_cpCheck" type="checkbox" value=""/>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="LampTable">
+    <div class="container mt-5">
+        <div id="lampTableCard" class="card card-nav-tabs"
+             style="display: none; box-shadow: 0 1rem 2rem rgba(0,0,0,0.5), 0 0.5rem 0.7rem rgba(0,0,0,0.5);width: 100%">
+            <div class="card-header card-header-primary">
+               Лампы:
+            </div>
+            <div class="card-body">
+                <table id="lamp_table_id" class="table table-striped table-bordered" width="100%"></table>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div th:fragment="CPTable">
+    <div class="container mt-5">
+        <div id="CPTableCard" class="card card-nav-tabs"
+             style="display: none; box-shadow: 0 1rem 2rem rgba(0,0,0,0.5), 0 0.5rem 0.7rem rgba(0,0,0,0.5);width: 100%">
+            <div class="card-header card-header-primary">
+                КП:
+            </div>
+            <div class="card-body">
+                <table id="cp_table_id" class="table table-striped table-bordered" width="100%"></table>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div th:fragment="UserAddFrom">
+    <div id="userAddForm" class="card"
+         style="display: none; box-shadow: 0 1rem 2rem rgba(0,0,0,0.5), 0 0.5rem 0.7rem rgba(0,0,0,0.5)">
+        <body class="bg-light">
+        <div class="container">
+            <div class="needs-validation" novalidate>
+                <hr class="mb-4">
+                <div class="row">
+                    <div class="mb-3 col-md-6"><label for="userAddForm_name_id">Имя пользователя:</label>
+                        <input type="text" class="form-control" id="userAddForm_name_id" placeholder="" value=""
+                               required="">
+                        <div id="userAddForm_name_id_invalid" class="invalid-feedback"> некорректное имя пользователя
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-4"><label for="userAddForm_pass_id">Пароль: </label>
+                            <input type="password" class="form-control" id="userAddForm_pass_id">
+                            <div id="userAddForm_pass_id_invalid" class="invalid-feedback"> некорректное имя
+                                пользователя
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="userAddFrom_email_id">email: </label>
+                        <input type="email" class="form-control" id="userAddFrom_email_id"
+                               placeholder="example@host.com">
+                        <div id="userAddFrom_email_id_invalid" class="invalid-feedback"> некорректное имя пользователя
+                        </div>
+
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" id="user_add_from">Добавить</button>
+                <hr class="mb-4">
+            </div>
+        </div>
+        </body>
+    </div>
+</div>
+
+<div th:fragment="NavDrawer">
+
+    <div class="wrapper ">
+        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+            <div class="logo">
+                <a class="simple-text logo-normal">
+                    Панель администратора
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item active  ">
+                        <a class="nav-link">
+                            <i class="material-icons">dashboard</i>
+                            <p>Общая информация</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link">
+                            <i class="material-icons">person</i>
+                            <p>Мой профиль</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link">
+                            <i class="material-icons">content_paste</i>
+                            <p>Структура</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/map">
+                            <i class="material-icons">location_ons</i>
+                            <p>Карта</p>
+                        </a>
+
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link">
+                            <i class="material-icons">notifications</i>
+                            <p>Уведомления</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel"  >
+            <!---->
+            <div class="container-fluid row" id="cards_container">
+
+            </div>
+            <div id="container-floating">
+                <div class="nd2 nd" id="back_button" data-toggle="tooltip" data-placement="left" data-original-title="Reminder">
+                    <img class="reminder"
+                         src="https://material.io/tools/icons/static/icons/baseline-settings_backup_restore-24px.svg"/>
+                </div>
+                <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="">
+                    <p class="plus">?</p>
+                    <p class="edit">+</p>
+                    <!--<img class="edit" src="https://material.io/tools/icons/static/icons/baseline-publish-24px.svg">-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div th:fragment="UserProfile">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Редактировать профиль</h4>
+                        <p class="card-category">Заполните поля</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">Company (disabled)</label>
+                                        <input type="text" class="form-control" disabled="">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">Имя пользователя</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">Email</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">Пароль</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating">Повторите пароль</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <button class="btn btn-primary pull-right">Сохранить изменения</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="MyProfile">
+
+    <div id="my_profile_id" class="card card-nav-tabs" style="box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);">
+        <div class="card-header card-header-primary">
+            <h4>Ваш профиль:</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <div>
+                        <div class="form-group row">
+                            <label for="username" class="col-4 col-form-label">Имя пользователя:</label>
+                            <div class="col-8">
+                                <input id="username" th:value="${username}" name="username" placeholder="Username" class="form-control here" required="required" type="text">
+                                <div class="invalid-feedback">
+                                    не может быть пустым!
+                                </div>
+                                <div class="valid-feedback">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="select" class="col-4 col-form-label">Роль:</label>
+                            <div class="col-8">
+                                <select id="select" name="role_select" class="custom-select">
+                                    <option th:each="role : ${roles}"
+                                            th:value="${role}"
+                                            th:text="${role}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="pass" class="col-4 col-form-label">Новый пароль:</label>
+                            <div class="col-8">
+                                <input id="pass" name="password" placeholder="password" class="form-control" type="password">
+                                <div class="invalid-feedback">
+                                    пароли должны совпадать!
+                                </div>
+                                <div class="valid-feedback">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="rep_pass" class="col-4 col-form-label">Повторите ввод:</label>
+                            <div class="col-8">
+                                <input id="rep_pass" name="repPassword" placeholder="password" class="form-control" type="password">
+                                <div class="invalid-feedback">
+                                    пароли должны совпадать!
+                                </div>
+                                <div class="valid-feedback">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="offset-4 col-8">
+                                <button id="profileBtn_id"  class="btn btn-primary">Обновить данные</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

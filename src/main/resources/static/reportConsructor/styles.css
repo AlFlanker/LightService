@@ -1,0 +1,107 @@
+.main-body {
+    margin: 5em auto 5em;
+}
+.form-ui-style  {
+    border-radius: 0.5em;
+    margin: 1em auto 3em;
+    padding: 1em 1em 1em;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    width: 95%;
+}
+.chart-ui-style {
+    margin: 4em auto 2em;
+    height: 35em;
+    width: 95%;
+}
+#showChart{
+    border-radius: 0.5em;
+    outline: none;
+    cursor: pointer;
+}
+.input-group-append:hover {
+    cursor: pointer;
+}
+.input-group-prepend:hover {
+    cursor: pointer;
+}
+.input-group-deactivated {
+    cursor: default;
+}
+.not-valid-object {
+    border-radius: 0.3em;
+    border: 1px solid #ff0000;
+}
+.valid-object {
+    border-radius: 0.2em;
+    border: 1px solid #008000;
+}
+.btn-group-inactive {
+    border-radius: 0.3em;
+    background: rgb(233, 236, 239);
+    pointer-events: none;
+    cursor: not-allowed;
+}
+.btn-outline-primary {
+    background-color: #ffffff;
+    border-color: #808080;
+    color: #808080;
+}
+.btn-outline-primary:hover {
+    background: #2a62bc;
+    background: -webkit-linear-gradient(to top, #2a62bc, #3875d7);
+    background: -moz-linear-gradient(to top, #2a62bc, #3875d7);
+    background: -o-linear-gradient(to top, #2a62bc, #3875d7);
+    color: #ffffff;
+}
+.custom-select {
+    width: 99.6%;
+}
+
+
+.pre-loader, .pre-loader .loader {
+    display: flex;
+    align-content: center;
+}
+.pre-loader {
+    height: 100%;
+    width: 100%;
+    padding: 20px 0;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    perspective: 800px;
+}
+.pre-loader-awaiter {
+    display: none;
+}
+.pre-loader .loader {
+    text-align: center;
+    margin: 5px;
+    border-radius: 50%;
+    border: 4px solid #000000;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    position: relative
+}
+.pre-loader .pre-loader .loader-inner-1 {
+    animation: change_first_circle 3s ease-in-out infinite
+}
+.pre-loader .loader-inner-2 {
+    animation: change_second_circle 3s ease-in-out infinite
+}
+.pre-loader .loader-inner-3 {
+    width: 100px;
+    height: 100px;
+    animation: change_last_circle 4s linear infinite
+}
+@keyframes change_first_circle {
+    50%{transform:rotateX(360deg) scale(.8)}
+}
+@keyframes change_second_circle {
+    50%{transform:rotateY(360deg) scale(.8)}
+}
+@keyframes change_last_circle {
+    50%{transform:rotateX(360deg) scale(.8)}
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <style type="text/css">
+        .form_ui_style {
+            /* Отступы вокруг элемента */
+            margin: 5% 20% auto;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            width: auto;
+        }
+    </style>
+    <div th:insert="~{bootstrap_elem :: head}"></div>
+
+</head>
+<body>
+<!--***********************************-->
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<div th:insert="~{navbar_thy :: navbar_parts}"></div>
+<div th:insert="~{security_data :: csrf_fragment}"></div>
+<div id="registrate_form_" th:include="~{registateForm :: registrate }"></div>
+<div style="display: none" id="login_form_" th:include="~{login_thy :: login (false,'/login')}"></div>
+<div th:insert="~{bootstrap_elem :: body}"></div>
+<script>
+
+
+    let username_elem = $("#username_req_form_id_");
+    let password_elem = $("#password_req_form_id_");
+
+    let email_elem = $("#email_req_form_id_");
+    let organization_elem = $("#domain_req_form_id_");
+    let username_valid = $("#username_req_form_id_invalid_");
+    let password_valid = $("#password_req_form_id_invalid_");
+    let email_valid = $("#email_req_form_id_invalid_");
+    let domain_valid = $("#domain_req_form_id_invalid_");
+    const token = $("meta[name='_csrf']").attr("content");
+    const header = $("meta[name='_csrf_header']").attr("content");
+
+    function isEmptyStr(str) {
+        return (str.length < 5 || !str.trim());
+    }
+
+    function validate() {
+        let username = username_elem.val();
+        let check = false;
+        if (isEmptyStr(username)) {
+            username_elem.addClass("is-invalid");
+            username_valid.text("имя пользователя должны быть от 5 до 25 символов!");
+            check = true;
+        }else username_elem.removeClass("is-invalid");
+        let password = password_elem.val();
+        if (isEmptyStr(password)) {
+            password_elem.addClass("is-invalid");
+            password_valid.text("пароль должен содержать от 5 до 20 символов!");
+            check = true;
+        } else password_elem.removeClass("is-invalid");
+
+
+        let organization = organization_elem.val();
+        if (isEmptyStr(organization)) {
+            organization_elem.addClass("is-invalid");
+            check = true;
+            domain_valid.text("название организации должны быть от 5 до 40 символов!");
+        } else organization_elem.removeClass("is-invalid");
+        return check;
+
+    }
+
+    function sendForm() {
+        if (username_elem.hasClass("is-invalid")) {
+            username_elem.removeClass("is-invalid");
+        }
+        if (password_elem.hasClass("is-invalid")) {
+            password_elem.removeClass("is-invalid");
+        }
+        if (email_elem.hasClass("is-invalid")) {
+            email_elem.removeClass("is-invalid");
+        }
+        if (organization_elem.hasClass("is-invalid")) {
+            organization_elem.removeClass("is-invalid");
+        }
+        let json = {
+            username: username_elem.val(),
+            password: password_elem.val(),
+            email: email_elem.val(),
+            organization: organization_elem.val()
+        }
+        $.ajax({
+            url: '/registration',
+            type: "POST",
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(json),
+            cache: false,
+            timeout: 600000,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            success: function (response) {
+                username_elem.addClass("is-valid");
+                password_elem.addClass("is-valid");
+                email_elem.addClass("is-valid");
+                organization_elem.addClass("is-valid");
+                $("#registrate_form_").hide();
+                $("#login_form_").show();
+                $("#reg_a_form_id").hide();
+                $("#username_req_form_id").val(username_elem.val());
+                $("#password_req_form_id").val(password_elem.val());
+            },
+            error: function (response) {
+                if (response.status == "406") {
+                    let answer = JSON.parse(response.responseText);
+                    Object.getOwnPropertyNames(answer).forEach((prop) => {
+                        switch (prop) {
+                            case "passworderror":
+                                password_elem.addClass("is-invalid");
+                                password_valid.text(answer.passworderror);
+                                break;
+                            case "organizationerror":
+                                organization_elem.addClass("is-invalid");
+                                domain_valid.text(answer.organizationerror);
+                                break;
+                            case "nameOfOrganization":
+                                organization_elem.addClass("is-invalid");
+                                domain_valid.text(answer.nameOfOrganization);
+                                break;
+                            case "organizationerror":
+                                organization_elem.addClass("is-invalid");
+                                domain_valid.text(answer.organizationerror);
+                                break;
+                            case "usernameerror":
+                                username_elem.addClass("is-invalid");
+                                username_valid.text(answer.usernameerror);
+                                break;
+                            case "user":
+                                username_elem.addClass("is-invalid");
+                                username_valid.text(answer.user);
+                                break;
+                            case "emailerror":
+                                email_elem.addClass("is-invalid");
+                                email_valid.text(answer.emailerror);
+                                break;
+
+                        }
+                    });
+                }
+
+
+            }
+        });
+
+
+    }
+
+    $(document).ready(function () {
+
+        $("#registrate_id_").on("click", function () {
+            console.log("invalid");
+            if (!validate()) {
+                console.log("valid");
+                sendForm();
+
+            }
+
+        });
+    });
+</script>
+</body>
+</html>
