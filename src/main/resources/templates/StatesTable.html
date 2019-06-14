@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+</head>
+<body>
+<div th:fragment="States_Table">
+    <div class="form-ui-style">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h2>Список состояний</h2>
+        </div>
+
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <table class="table table-hover" id="states_table" width="100%">
+                <thead>
+                <tr>
+                    <th scope="col">Объект</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col">vAc</th>
+                    <th scope="col">iAc</th>
+                    <th scope="col">Температура</th>
+                    <th scope="col">vDCBoard</th>
+                    <th scope="col">Яркость</th>
+                    <th scope="col">Состояние</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <script type="text/javascript" src="states.js"></script>
+    </div>
+</div>
+</body>
+</html>

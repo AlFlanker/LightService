@@ -1,0 +1,9 @@
+.leaflet-container.crosshair-cursor-enabled {
+    cursor: crosshair;
+}
+
+/*
+ИЛИ!!
+m.on("mouseover",function(){$('.leaflet-mouse-marker').css('cursor','crosshair');});
+
+m.on("mouseout",function(){$('.leaflet-mouse-marker').css('cursor','');});*/

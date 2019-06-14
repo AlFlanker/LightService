@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<div th:fragment="csrf_fragment">
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"></meta>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"></meta>
+</div>
+
+</body>
+</html>

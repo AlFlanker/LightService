@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        #mapid {
+            width: 100%;
+            height: 100%;
+            min-height: 100%;
+        }
+
+        .fill {
+            min-height: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div th:fragment="map_add_to_group">
+    <div class="modal fade bd-example-modal-sm" id="add_2group_modal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="card form_ui_style">
+                    <div class="card-body">
+                        <label>Выберите группу:</label>
+                        <div class="input-group mt-1">
+                            <select class="custom-select" id="groups_id" aria-label="group_label">
+                            </select>
+                        </div>
+                        <div th:if="${mode}=='edit'">
+                            <label>Добавить новую группу:</label>
+                            <div class="input-group mb-3" >
+                                <input type="text" class="form-control" id="new_group_name_input" placeholder="Введите название новой группы"
+                                       aria-label="Введите название новой группы" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" title="Добавить новую группу" onclick="addNewGroup()"  type="button">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="addSelectedObjToGroup()">Добавить в группу</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="map_switch (mode)">
+    <link rel="stylesheet" href="/map_api/map.css"/>
+    <div th:if="${mode}==view">
+
+
+        <link rel="stylesheet" href="/map_api/Legend/EditMenu.css"/>
+        <script src="/map_api/Legend/EditMenu.js"></script>
+        <script src="/map_api/Legend/SwitchMenu.js"></script>
+        <script type="text/javascript" src="/map_api/map_mouse_events.js"></script>
+        <script type="text/javascript" src="/map_api/map_service_func.js"></script>
+        <script type="text/javascript" src="/map_api/map_init.js"></script>
+        <script type="text/javascript" src="/map_api/map_wss.js"></script>
+    </div>
+    <div th:if="${mode}==edit">
+        <script type="text/javascript" src="/map_api/ajaxPostQuery.js"></script>
+        <script type="text/javascript" src="/map_api/popup_dialogs.js"></script>
+        <script type="text/javascript" src="/map_api/map_service_func.js"></script>
+        <script type="text/javascript" src="/map_api/extends/Leaflet.Editable.js"></script>
+        <script type="text/javascript" src="/map_api/map_mouse_events.js"></script>
+        <link rel="stylesheet" href="/map_api/Legend/EditMenu.css"/>
+        <link rel="stylesheet" href="/map_api/Legend/SwitchMenu.css"/>
+        <link rel="stylesheet" href="/map_api/Legend/GroupMenu.css"/>
+        <script src="/map_api/Legend/EditMenu.js"></script>
+        <script src="/map_api/Legend/SwitchMenu.js"></script>
+        <script src="/map_api/Legend/GroupMenu.js"></script>
+        <script type="text/javascript" src="/map_api/map_init_with_edit_methods.js"></script>
+        <script type="text/javascript" src="/map_api/map_runtime_edit_events.js"></script>
+        <script type="text/javascript" src="/map_api/map_wss.js"></script>
+    </div>
+</div>
+</body>
+</html>

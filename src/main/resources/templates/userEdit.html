@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:insert="~{bootstrap_elem :: head}"></div>
+    <style type="text/css">
+        .form_ui_style  {
+            /* Отступы вокруг элемента */
+            margin: 5% 20% auto;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="~{bootstrap_elem :: body}"></div>
+<div th:insert="~{navbar_thy :: navbar_parts}"></div>
+<div class="container mt-5">
+    <div class="card form_ui_style">
+        <div class="card-header"><h2>Изменить данные пользователя:</h2></div>
+        <div class="card-body">
+            <form th:action="@{/user/edit}" method="post">
+                <div class="row">
+                    <div class="col">
+                        <label for="username_edit">Имя пользователя:</label>
+                        <div>
+                            <input type="text" class="form-control" style="width: auto" id="username_edit"
+                                   name="username" th:value="${username}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="email_edit">Почта:</label>
+                        <div>
+                            <input type="text" class="form-control" style="width: auto" id="email_edit" name="email"
+                                   th:value="${email}">
+                        </div>
+                        <input type="hidden" th:value="${user_ID}" name="userId">
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary mt-3 ml-3" type="submit">Сохранить</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>>

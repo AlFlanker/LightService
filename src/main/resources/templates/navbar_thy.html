@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+</head>
+<body>
+
+<div th:fragment="navbar_parts">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt=0">
+        <a class="navbar-brand" href="/">YugLightService</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" th:if="${#httpServletRequest.remoteUser} !=null">
+                    <a class="nav-link" th:href="@{/report}">Отчеты</a>
+                </li>
+                <li class="nav-item" th:if="${#httpServletRequest.remoteUser} !=null">
+                    <a class="nav-link" th:href="@{/map}">Карта</a>
+                </li>
+                <div sec:authorize="hasAnyRole('SuperUserOwner','ADMIN','SuperUser')">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/globalManager}">Панель администратора</a>
+                    </li>
+                </div>
+            </ul>
+            <div th:if="${#httpServletRequest.getUserPrincipal()}">
+                <div th:text="${#httpServletRequest.getUserPrincipal().getName()}" class="navbar-text mr-5">unknow</div>
+            </div>
+
+            <div sec:authorize="hasAnyRole('SuperUserOwner','ADMIN','SuperUser')">
+                <form class="form-inline my-2 my-lg-0 mr-2" th:action="@{/profile}" method="get">
+                    <button class="btn btn-info my-2 my-sm-0" type="submit">Профиль</button>
+                </form>
+            </div>
+            <div th:if="${#httpServletRequest.remoteUser}== null">
+                <a class="nav-link" th:href="@{/login}">Войти</a>
+            </div>
+
+            <div th:if="${#httpServletRequest.remoteUser} !=null">
+                <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
+                    <button class="btn btn-danger my-2 my-sm-0" type="submit">Выйти</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

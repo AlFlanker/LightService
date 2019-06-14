@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/globalManager.css" th:href="@{/css/globalManager.css}"/>
+    <!--<link href="../node_modules/material-design-icons/iconfont/material-icons.css" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <div th:insert="~{bootstrap_elem :: head}"></div>
+
+</head>
+<body>
+<div th:insert="~{security_data :: csrf_fragment}"></div>
+<meta name="user_role" data-th-attr="content=${#authentication.getAuthorities()}"/>
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">-->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+<div th:insert="~{bootstrap_elem :: body}"></div>
+<div>
+    <h1 class="text-center" id="page_heap">Менеджер организации</h1>
+    <button type="button" class="btn btn-info" style="float: right;display: none" id="net_data_btn">Источники
+        данных
+    </button>
+</div>
+<div class="container" >
+
+
+    <div th:insert="~{FragmentForAdminTools :: Profile}"></div>
+    <div th:insert="~{FragmentForAdminTools :: organizationForm}"></div>
+    <div th:insert="~{FragmentForAdminTools :: WorkGroupForm}"></div>
+    <div th:insert="~{FragmentForAdminTools :: UserEditForm}"></div>
+    <div th:insert="~{FragmentForAdminTools :: UserAddFrom}"></div>
+    <div class="wrapper ">
+        <div class="sidebar" data-color="azure" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+            <div class="logo">
+                <a class="simple-text logo-normal" href="/">
+                    вернуться назад
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item" id="main_info_">
+                        <a class="nav-link" id="main_info_btn">
+                            <i class="material-icons">dashboard</i>
+                            <p>Общая информация</p>
+                        </a>
+                    </li>
+                    <li class="nav-item " id="my_profile_parent_btn">
+                        <a class="nav-link" id="my_profile_btn_id">
+                            <i class="material-icons">person</i>
+                            <p>Мой профиль</p>
+                        </a>
+                    </li>
+                    <li class="nav-item active" id="struct_parent_id">
+                        <a class="nav-link" id="struct_btn_id">
+                            <i class="material-icons">content_paste</i>
+                            <p>Структура</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/map">
+                            <i class="material-icons">location_ons</i>
+                            <p>Карта</p>
+                        </a>
+
+                    </li>
+                    <!--<li class="nav-item ">-->
+                        <!--<a class="nav-link">-->
+                            <!--<i class="material-icons">notifications</i>-->
+                            <!--<p>Уведомления</p>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <!---->
+            <div th:insert="~{FragmentForAdminTools :: itemSelection}"></div>
+            <div th:insert="~{FragmentForAdminTools :: LampTable}"></div>
+            <div th:insert="~{FragmentForAdminTools :: CPTable}"></div>
+            <div class="container" id="container_my_profile" style="display: none">
+                <div class="justify-content-center">
+                    <div th:insert="~{FragmentForAdminTools :: MyProfile}"></div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row" id="main_info_container"></div>
+                <div class="row" id="main_container"></div>
+            </div>
+            <div class="container-fluid row" id="cards_container">
+
+            </div>
+            <div id="container-floating">
+                <div class="nd2 nd" id="back_button" data-toggle="tooltip" data-placement="left"
+                     data-original-title="Reminder">
+                    <img class="reminder"
+                         src="https://material.io/tools/icons/static/icons/baseline-settings_backup_restore-24px.svg"/>
+                </div>
+                <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create"
+                     onclick="">
+                    <p class="plus">?</p>
+                    <p class="edit">+</p>
+                    <!--<img class="edit" src="https://material.io/tools/icons/static/icons/baseline-publish-24px.svg">-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="display: none">
+    </div>
+
+
+</div>
+<!--<footer class="footer">-->
+    <!--<div class="container-fluid">-->
+
+        <!--<div class="copyright float-right">-->
+            <!--&copy;-->
+            <!--<a target="_blank">Юг система плюс</a>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</footer>-->
+<!--<div id="container-floating">-->
+<!--<div class="nd2 nd" id="back_button" data-toggle="tooltip" data-placement="left" data-original-title="Reminder">-->
+<!--<img class="reminder"-->
+<!--src="https://material.io/tools/icons/static/icons/baseline-settings_backup_restore-24px.svg"/>-->
+<!--</div>-->
+<!--<div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="">-->
+<!--<p class="plus">?</p>-->
+<!--<p class="edit">+</p>-->
+<!--&lt;!&ndash;<img class="edit" src="https://material.io/tools/icons/static/icons/baseline-publish-24px.svg">&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<script type="text/javascript"-->
+        <!--th:src="${isDevMode} ? 'http://localhost:8001/globalManager-min.js': '/production/globalManager-min.js'"-->
+        <!--defer></script>-->
+<script type="text/javascript" src="/production/globalManager-min.js"
+defer></script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:insert="~{bootstrap_elem :: head}"></div>
+    <div th:insert="~{security_data :: csrf_fragment}"></div>
+    <style>
+        .services-icon {
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body class="body">
+<div th:insert="~{bootstrap_elem :: body}"></div>
+<div th:insert="~{navbar_thy :: navbar_parts}"></div>
+<section class="py-5 text-center">
+
+    <div class="container">
+        <h2 class="text-center">Сервис управления городским освещением</h2>
+        <p class="text-muted mb-5 text-center">Удобный и простой сервис основанный на технологии LoRaWan</p>
+        <div class="row">
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <img src="https://ipc2u.ru/upload/medialibrary/fae/image003.png" class="img-fluid" alt="LoRaWan">
+                <h6>LoRaWan</h6>
+                <p class="text-muted">LoRaWAN – одна из самых востребованных LPWAN сетей в мире.</p>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <img src="https://ipc2u.ru/upload/medialibrary/fae/image003.png" class="img-fluid" alt="LoRaWan">
+                <h6>Контроль</h6>
+                <p class="text-muted">Информация с оборудование поступает в режиме Runtime.</p>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <img src="https://ipc2u.ru/upload/medialibrary/fae/image003.png" class="img-fluid" alt="LoRaWan">
+                <h6>Управления</h6>
+                <p class="text-muted">Централизованное управление оборудованием. Отображение и управление состояниями
+                    объектов на карте в удобном виде.</p>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <img src="https://ipc2u.ru/upload/medialibrary/fae/image003.png" class="img-fluid" alt="LoRaWan">
+                <h6>Экономия</h6>
+                <p class="text-muted">Гибкое управление параметрами освещения и своевременное оповещение о
+                    неполадках</p>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <img src="https://ipc2u.ru/upload/medialibrary/fae/image003.png" class="img-fluid" alt="LoRaWan">
+                <h6>Удобство</h6>
+                <p class="text-muted">Простое конфигурирование оборудование через современный смартфон!</p>
+            </div>
+            <div class="col-sm-6 col-lg-4 mb-3">
+                <img src="https://ipc2u.ru/upload/medialibrary/fae/image003.png" class="img-fluid" alt="LoRaWan">
+                <h6>Инновационно</h6>
+                <p class="text-muted">Будь в тренде!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
